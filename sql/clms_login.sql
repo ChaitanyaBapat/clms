@@ -10,10 +10,10 @@ create database clms;
     status int(1) not null
 );
 create table clms_login_faliure (
-    username varchar(50) not null,
+    email varchar(100) not null,
     last_attempt timestamp not null,
-    attempts timestamp not null,
-    FOREIGN key (username) REFERENCES clms_user_info(username)
+    attempts int(2) not null,
+    FOREIGN key (email) REFERENCES clms_user_info(username)
     
 );
 create table clms_login_maintenance (
@@ -23,9 +23,9 @@ create table clms_login_maintenance (
     remote_addr varchar(45) not null,
     http_x_forwarded_for varchar(45) not null
 );
-create user 'clms_login_select'@'localhost' identified by 'kEkLoRdchaitanya123456789';
+create user 'clms_login_select'@'localhost' identified by '';
 grant select on clms.clms_user_info to 'clms_login_select'@'localhost';
 grant select, insert, update on clms.clms_login_faliure to 'clms_login_select'@'localhost';
 grant select, insert, update on clms.clms_login_maintenance to 'clms_login_select'@'localhost';
 flush privileges;
--- kEkLoRdchaitanya123456789
+-- 
